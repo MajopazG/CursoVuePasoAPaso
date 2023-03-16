@@ -25,6 +25,12 @@ defineProps({
                 {{ id }} - {{ title }}
             </h5>
             <p>{{ body }}</p>
+            <button
+                class="btn btn-sm btn-outline-primary"
+                @click="$emit('fijarFavorito', title)"
+            >
+                Mi Favorito
+            </button>
         </div>
     </div>
 </template>

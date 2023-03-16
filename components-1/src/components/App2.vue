@@ -1,21 +1,20 @@
 <script setup>
 import { ref } from "vue";
-
 import BlogPost from './components/BlogPost.vue';
-import PaginatePots from './components/PaginatePots.vue'
+//import ButtonCounter from './components/ButtonCounter.vue';
 
-const posts = ref([]);
+const posts = ref([
+  {title: 'Post 1', id: 1, body: 'Descripcion 1'}, 
+  {title: 'Post 2', id: 2, body: 'Descripcion 2'}, 
+  {title: 'Post 3', id: 3, body: 'Descripcion 3'}, 
+  {title: 'Post 4', id: 4 },
+]);
 
 const miFavorito = ref("");
 
 const fijarFavorito = (title) => {
   miFavorito.value = title; 
 };
-
-fetch('https://jsonplaceholder.typicode.com/posts')
-    .then((res) => res.json())
-    .then((data) => posts.value = data);
-
 </script>
 
 <template>
@@ -24,8 +23,6 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     <h2>Mis Post Favoritos:
       {{ miFavorito || "Sin Favorito" }}
     </h2>
-
-    <PaginatePots class="mb-2"/>
 
     <BlogPost 
       v-for="post in posts"
